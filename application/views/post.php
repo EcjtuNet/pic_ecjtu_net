@@ -525,10 +525,10 @@ jQuery(document).ready(function() {
 					
 					jQuery(document).ready(function(){
 						jQuery('#admin_name').click(function(){
-							this.val(this.val()=='日新网友'?'':this.val());
+							jQuery(this).val(jQuery(this).val()=='日新网友'?'':jQuery(this).val());
 						});
 						jQuery('#txt').click(function(){
-							this.val(this.val()=='来说一点什么吧！'?'':this.val());
+							jQuery(this).val(jQuery(this).val()=='来说一点什么吧！'?'':jQuery(this).val());
 						});
 					});
 						
