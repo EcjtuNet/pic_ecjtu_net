@@ -523,11 +523,11 @@ jQuery(document).ready(function() {
                </form>
                <script>
 					
-					$(document).ready(function(){
-						$('#admin_name').click(function(){
+					jQuery(document).ready(function(){
+						jQuery('#admin_name').click(function(){
 							this.val(this.val()=='日新网友'?'':this.val());
 						});
-						$('#txt').click(function(){
+						jQuery('#txt').click(function(){
 							this.val(this.val()=='来说一点什么吧！'?'':this.val());
 						});
 					});
