@@ -1,0 +1,22 @@
+* { margin: 0; padding: 0; }
+body { border-top-width: 30px; border-top-style: solid; border-top-color:#666; font-size: 12px; }
+form { margin-left: 8px; padding: 16px 16px 40px 16px; font-weight: normal; -moz-border-radius: 11px; -khtml-border-radius: 11px; -webkit-border-radius: 11px; border-radius: 5px; background: #fff; border: 1px solid #e5e5e5; -moz-box-shadow: rgba(200, 200, 200, 1) 0 4px 18px; -webkit-box-shadow: rgba(200, 200, 200, 1) 0 4px 18px; -khtml-box-shadow: rgba(200, 200, 200, 1) 0 4px 18px; box-shadow: rgba(200, 200, 200, 1) 0 4px 18px; }
+form .forgetmenot { font-weight: normal; float: left; margin-bottom: 0; }
+#login form .submit input { padding: 3px 10px; border: none; font-size: 12px; border-width: 1px; border-style: solid; -moz-border-radius: 11px; -khtml-border-radius: 11px; -webkit-border-radius: 11px; border-radius: 11px; cursor: pointer; text-decoration: none; text-shadow: rgba(0, 0, 0, 0.3) 0 -1px 0; background-color:#21759B; color:#FFF; font-weight:bold; border-color: #21759B; }
+#login form p { margin-bottom: 0; }
+label { color: #777; font-size: 13px; }
+form .forgetmenot label { font-size: 11px; line-height: 19px; }
+form .submit { float: right; }
+form p { margin-bottom: 24px; }
+h1 { font-size:24px; padding:10px; color: #006C91; }
+h1 a { width: 326px; height: 90px; text-indent: -9999px; overflow: hidden; padding-bottom: 15px; display: block; background-repeat: no-repeat; }
+#sub { font-size: 14px; color: #999; font-weight: normal; }
+#nav { text-shadow: rgba(255, 255, 255, 1) 0 1px 0; }
+#back a { position: absolute; top: 7px; left: 15px; text-decoration: none; color:#CCC; }
+#back a:hover { color:#FFF; }
+#login { width: 320px; margin: 7em auto; }
+#login_error, .message { margin: 0 0 16px 8px; border-width: 1px; border-style: solid; padding: 12px; -moz-border-radius: 3px; -khtml-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; border-color: #C00; background-color: #FFEBE8; }
+#nav { margin: 0 0 0 8px; padding: 16px; }
+#user_pass, #user_login { font-size: 24px; width: 97%; padding: 3px; margin-top: 2px; margin-right: 6px; margin-bottom: 16px; border: 1px solid #e5e5e5; background: #fbfbfb; }
+#user_code { font-size: 24px; width: 100px; padding: 3px; margin-top: 2px; margin-right: 6px; margin-bottom: 16px; border: 1px solid #e5e5e5; background: #fbfbfb; }
+.clear { clear: both; }
