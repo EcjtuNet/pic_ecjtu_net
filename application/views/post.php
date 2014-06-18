@@ -465,7 +465,7 @@ jQuery(document).ready(function() {
                   
 			  }
 			var images=getClassName('scoll_image_mid');
-			console.log(images);
+			//console.log(images);
 			images.forEach(function(e,index)
 			{
 				e.onclick=function(){images_change(index);}
