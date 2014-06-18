@@ -528,7 +528,7 @@ jQuery(document).ready(function() {
 							jQuery(this).val(jQuery(this).val()=='日新网友'?'':jQuery(this).val());
 						});
 						jQuery('#txt').click(function(){
-							jQuery(this).val(jQuery(this).val()=='来说一点什么吧！'?'':jQuery(this).val());
+							jQuery(this).text(jQuery(this).text()=='来说一点什么吧！'?'':jQuery(this).text());
 						});
 					});
 						
