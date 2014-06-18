@@ -527,7 +527,7 @@ jQuery(document).ready(function() {
 						jQuery('#admin_name').click(function(){
 							jQuery(this).val(jQuery(this).val()=='日新网友'?'':jQuery(this).val());
 						});
-						jQuery('#txt').click(function(){
+						jQuery('#admin_content').click(function(){
 							jQuery(this).text(jQuery(this).text()=='来说一点什么吧！'?'':jQuery(this).text());
 						});
 					});
