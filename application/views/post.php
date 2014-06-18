@@ -513,16 +513,22 @@ jQuery(document).ready(function() {
                <?php endforeach; ?>
               <div class="pagelink"><?php echo $page_links; ?></div>
                <form action="<?php echo site_url('comments_insert')?>" method="post" name="commentform" id="admin_comments" >
-               <input type="text" name="author" maxlength="49" value="日新网友" class="admin_name"  id="admin_name" onfocus="value='';">
+               <input type="text" name="author" maxlength="49" value="日新网友" class="admin_name"  id="admin_name">
           
-               <div id="txt" style="margin-top: 5px;"><textarea name="text" id="admin_content" onfocus="value='';">来说一点什么吧！</textarea></div>
+               <div id="txt" style="margin-top: 5px;"><textarea name="text" id="admin_content">来说一点什么吧！</textarea></div>
                <input type="hidden" name="comments_posts_id" value="<?php echo $posts['0']['posts_id']; ?>" size="10" tabindex="1"/>
 			   <input type="hidden" name="captcha_check" id="captcha_check" value="">
                <div id="liu_return"><div id="liu_tishi">按Ctrl+Enter快速回复</div><div id="liu_but"><input type="submit" value="发表留言" /></div></div>
        
                </form>
                <script>
-					
+						
+						$('#admin_name').click(function(){
+							this.val(this.val()=='日新网友'?'':this.val());
+						});
+						$('#txt').click(function(){
+							this.val(this.val()=='来说一点什么吧！'?'':this.val());
+						});
 					 
 		               function keyDown(event){
 		            	   var admin_comments = document.getElementById('admin_comments');
