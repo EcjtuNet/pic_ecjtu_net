@@ -11,7 +11,7 @@
 <div class="container">
     <div class="header">
            <div class="headerMid">
-              <div class="logo"><a  href="http://pic.ecjtu.net"><img src="<?php echo base_url(); ?>images/logo.gif" /></a></div>
+              <div class="logo"><a  href="http://www.ecjtu.net"><img src="<?php echo base_url(); ?>images/logo.gif" /></a></div>
               <div class="shouye"><a style="display:block;width:100%;height:100%" href="http://www.ecjtu.net/"></a></div>
               <div class="new"><a style="display:block;width:100%;height:100%" href="http://www.ecjtu.net/html/ecjtunews1/" target=_blank></a></div>
               <div class="tushuo"><a style="display:block;width:100%;height:100%" href="<?php echo site_url(); ?>" ></a></div>
