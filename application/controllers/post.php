@@ -107,11 +107,6 @@ class Post extends CI_Controller
 				$this->output->cache($cache['cache_expire_time']);
 			}
 			*/
-			
-			session_start();
-			$_SESSION['captcha'] = rand(0,1000);
-			$data['captcha'] = $_SESSION['captcha'];
-
 			$this->load->view('post',$data);
     	}
     	else
@@ -125,9 +120,9 @@ class Post extends CI_Controller
 	{
 		session_start();
 		echo '<html><head><meta http-equiv="content-type" content="text/html;charset=utf-8"></head>';
-		if( !$this->input->post('captcha',true) || $this->input->post('captcha', true) != $_SESSION['captcha'])
+		if($this->input->post('captcha',true))
 		{
-			//$_SESSION['captcha'] = $this->input->post('captcha',true);
+			$_SESSION['captcha'] = $this->input->post('captcha',true);
 			exit();
 		}
 		if($this->input->post('comments_posts_id', TRUE)==''||$this->input->post('text', TRUE)==''||$_SERVER['HTTP_REFERER']!=site_url('pictures').'/'.$this->input->post('comments_posts_id', TRUE))

@@ -518,7 +518,6 @@ jQuery(document).ready(function() {
                <div id="txt" style="margin-top: 5px;"><textarea name="text" id="admin_content">来说一点什么吧！</textarea></div>
                <input type="hidden" name="comments_posts_id" value="<?php echo $posts['0']['posts_id']; ?>" size="10" tabindex="1"/>
 			   <input type="hidden" name="captcha_check" id="captcha_check" value="">
-			   <input type="hidden" name="captcha" id="captcha" value="<?php echo $captcha ?>">
                <div id="liu_return"><div id="liu_tishi">按Ctrl+Enter快速回复</div><div id="liu_but"><input type="submit" value="发表留言" /></div></div>
        
                </form>
