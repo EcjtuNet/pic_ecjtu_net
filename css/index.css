@@ -14,7 +14,7 @@ a{text-decoration:none;}
 .hand{cursor:pointer;}
 
 
-#list{width:980px;height:40px; background:url(../images/bg_line_repeat.gif);float:left;}
+#list{margin-top:-3px;width:980px;height:40px; background:url(../images/bg_line_repeat.gif);float:left;}
 #list_p{margin-top:13px;margin-left:37px;color:#8d8c8c;font-size:12px; font-family:"宋体"; }
 #list_p a{color:#8d8c8c; text-decoration:none;}
 #list_title,#list_detali,#list_fun{float:left;}
