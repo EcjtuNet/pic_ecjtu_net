@@ -167,9 +167,10 @@ class Post extends CI_Controller
 		}
 	}
 
-	function check_spam($text)
+	function check_spam($string)
 	{
 	    $strlen = mb_strlen($string); 
+	    $strlen_ = $strlen;
 	    if($strlen < 40){
 	    	return TRUE;
 	    }
@@ -181,12 +182,11 @@ class Post extends CI_Controller
 	        $string = mb_substr($string,1,$strlen,"UTF-8"); 
 	        $strlen = mb_strlen($string); 
 	    }
-	    if(float($en_len)/float($strlen) > 0.9){
+	    if($en_len/$strlen_ > 0.9){
 	    	return FALSE;
 	    }else{
 	    	return TRUE;
 	    }
-
 	}
 	
 	function comments_ajax()
