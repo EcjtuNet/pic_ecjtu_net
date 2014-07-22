@@ -107,6 +107,11 @@ class Post extends CI_Controller
 				$this->output->cache($cache['cache_expire_time']);
 			}
 			*/
+
+			session_start();
+			$_SESSION['captcha'] = rand(0,1000);
+			$data['captcha_check'] = $_SESSION['captcha'];
+
 			$this->load->view('post',$data);
     	}
     	else
@@ -129,7 +134,7 @@ class Post extends CI_Controller
 		{
 			echo $this->input->post('text', TRUE);
 			echo '<script>
-					alert("留言内容不能为空~");
+					alert("留言内容不能为空");
 					location = "'.site_url('pictures').'/'.$this->input->post('comments_posts_id', TRUE).'";'
 				.'</script>';
 				//Header("Location:".site_url('pictures').'/'.$this->input->post('comments_posts_id', TRUE));
@@ -155,7 +160,7 @@ class Post extends CI_Controller
 		else
 		{
 			echo '<script>
-					alert("comment error!~");
+					alert("comment error!");
 					location = "'.site_url('pictures').'/'.$this->input->post('comments_posts_id', TRUE).'";'
 				.'</script>';
 				exit();
