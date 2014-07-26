@@ -49,12 +49,12 @@ $route['list/(:num)/(:num)']="imglist/index/$1/$2";
 $route['pictures/(:num)'] = "post/view/$1";
 $route['pictures/(:num)/(:num)'] = "post/view/$1/$2";
 $route['thumb/(:any)'] = "post/thumb/$1";
-$route['(:any)'] = "category/index/$1";
 $route['comments_insert'] = "post/comments_insert";
 $route['comments'] = "post/comments_ajax";
 $route['comments_ajax/(:num)/(:num)'] = "post/comments/$1/$2";
 $route['upload'] = "upload/index";
 $route['upload_add'] = "upload/upload_add";
+$route['(:any)'] = "category/index/$1";
 $route['default_controller'] = "home";
 $route['404_override'] = '';
 
