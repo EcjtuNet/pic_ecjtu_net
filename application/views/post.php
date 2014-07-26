@@ -171,7 +171,7 @@ jQuery(document).ready(function() {
                <div id="scoll_right">
                    <img src="images/next_press_r.gif" />
                </div>
-               <div id="scoll_line"><div id="point_left"></div><div id="line"></div><div id="point_right"></div>
+               <div id="scoll_line" style="display:none;"><div id="point_left"></div><div id="line"></div><div id="point_right"></div>
 			   <div id="moveBut"><img src="images/sLeft.gif" /><div class="moveLen"></div><img src="images/sMiddle.gif" /><div class="moveLen"></div><img src="images/sRight.gif" /></div>
 			   </div>
 			   <script type="text/javascript">
