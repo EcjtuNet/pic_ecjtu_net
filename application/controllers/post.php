@@ -148,7 +148,7 @@ class Post extends CI_Controller
 			'comments_text'		=> strip_tags($this->input->post('text', TRUE)),
 			'comments_ip'		=> $this->input->ip_address(),
 		);
-		if($_SESSION['captcha']==$this->input->post('captcha_check', TRUE))
+		if($_SESSION['captcha']==$this->input->post('captcha_check', TRUE) && $this->check_spam($this->input->post('text', TRUE)))
 		{
 			$comments_bool = $this->Posts_m->comments_insert($comments);
 			if($comments_bool)
@@ -165,6 +165,28 @@ class Post extends CI_Controller
 				.'</script>';
 				exit();
 		}
+	}
+
+	function check_spam($string)
+	{
+	    $strlen = mb_strlen($string); 
+	    $strlen_ = $strlen;
+	    if($strlen < 40){
+	    	return TRUE;
+	    }
+	    $en_len = 0;
+	    while ($strlen) { 
+	        if(strlen(mb_substr($string,0,1,"UTF-8")) == 1){
+	        	$en_len += 1;
+	        } 
+	        $string = mb_substr($string,1,$strlen,"UTF-8"); 
+	        $strlen = mb_strlen($string); 
+	    }
+	    if($en_len/$strlen_ > 0.9){
+	    	return FALSE;
+	    }else{
+	    	return TRUE;
+	    }
 	}
 	
 	function comments_ajax()
