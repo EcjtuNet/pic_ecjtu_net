@@ -209,6 +209,15 @@ class Post extends CI_Controller
 	    exit();
 	}
 	
+	//上一个函数不知道能不能修改，所以重新写了这个
+	function comments($picid, $page)
+	{
+		$perpage = 3;
+		$comments = $this->Posts_m->get_comments_by_id($picid, $page, $perpage);
+		echo json_encode($comments);
+		exit();
+	}
+
 	function thumb()
 	{
 		$pic = str_replace('_', '/', $this->uri->segment(3));
