@@ -8,11 +8,11 @@ a{text-decoration:none;}
 .headerMid{width:980px; margin:auto;height:129px;}
 .logo{width:258px;height:76px;margin-left:32px;float:left;margin-top:33px;}
 .shouye a{width:63px;height:31px; background:url(../images/anniu.png) no-repeat 0 0 ;margin-left:28px;float:left;margin-top:80px;}
-	.shouye a:hover{ background:url(../images/anniu.png) no-repeat 0 31px; }
-.new a{width:63px;height:31px; background:url(../images/anniu.png) no-repeat 63px 0 ;margin-left:15px;margin-top:80px;float:left;}
-	.new a:hover{ background:url(../images/anniu.png) no-repeat  63px 31px ; }
-.tushuo a{width:63px;height:31px; background:url(../images/anniu.png) no-repeat 128px 0;margin-left:15px;margin-top:80px;float:left;}
-	.tushuo a:hover{ background:url(../images/anniu.png) no-repeat 128px 31px ; }
+	.shouye a:hover{ background:url(../images/anniu.png) no-repeat 0 -31px; }
+.new a{width:63px;height:31px; background:url(../images/anniu.png) no-repeat -63px 0 ;margin-left:15px;margin-top:80px;float:left;}
+	.new a:hover{ background:url(../images/anniu.png) no-repeat  -63px -31px ; }
+.tushuo a{width:63px;height:31px; background:url(../images/anniu.png) no-repeat -128px 0;margin-left:15px;margin-top:80px;float:left;}
+	.tushuo a:hover{ background:url(../images/anniu.png) no-repeat -128px -31px ; }
 .mid{width:980px; margin:auto; background:#000;height:100%; overflow:hidden; }
 .hand{cursor:pointer;}
 
