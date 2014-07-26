@@ -52,6 +52,7 @@ $route['thumb/(:any)'] = "post/thumb/$1";
 $route['(:any)'] = "category/index/$1";
 $route['comments_insert'] = "post/comments_insert";
 $route['comments'] = "post/comments_ajax";
+$route['comments_ajax/(:num)/(:num)'] = "post/comments/$1/$2";
 $route['upload'] = "upload/index";
 $route['upload_add'] = "upload/upload_add";
 $route['default_controller'] = "home";
