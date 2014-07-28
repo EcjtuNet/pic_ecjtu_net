@@ -83,7 +83,7 @@
                     var listBox = jQuery('<div class="pagelink"></div>')
                     ,   alist   = '';
                     for ( ; j < total; j++ ) {
-                        if ( j === curPage  ) {
+                        if ( j === curPage*1 ) {
                             alist += '&nbsp;<strong>' + (curPage + 1) + '</strong>';
                             continue;
                         }
