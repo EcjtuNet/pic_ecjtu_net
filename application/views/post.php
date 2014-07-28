@@ -40,12 +40,14 @@
             ,   page   = urlArr[1];
             */
             var picId = <?php echo $picid; ?>;
-            var url = urlnew || 'http://pic.ecjtu.net/index.php/comments_ajax/' + picId;
+            var url = urlnew || 'http://pic.ecjtu.net/index.php/comments_ajax/' + picId + '/0';
+            
+            console.log(url)
             jQuery.get( url, function (data) {
                 console.log(data)
                 var template = jQuery('#template').html()
                 ,   i = 0
-                ,   j = 1
+                ,   j = 0
                 ,   curPage = data['cur_page']
                 ,   count = data['comments_count']
                 ,   total = data['total_page']
@@ -84,13 +86,13 @@
                     }
                     var listBox = jQuery('<div class="pageLink"></div>')
                     ,   alist   = '';
-                    for ( ; j <= total; j++ ) {
-                        if ( j === curPage*1 ) {
+                    for ( ; j < total; j++ ) {
+                        if ( j + 1 === curPage*1 ) {
                             alist += '&nbsp;<strong>' + curPage + '</strong>';
                             continue;
                         }
                         alist += '&nbsp;<a href="http://pic.ecjtu.net/index.php/comments_ajax/' 
-                            + picId + '/' + j + '">' + j + '</a>';
+                            + picId + '/' + j + 1 + '">' + j + 1 + '</a>';
                     }
                     listBox.append( alist );
                     console.log(content, listBox)
@@ -98,6 +100,7 @@
                 }
             }, 'json' );
         };
+        console.log('shownext')
         show();
         jQuery('.pageLink a').live('click', function ( e ) {
             e.preventDefault();
