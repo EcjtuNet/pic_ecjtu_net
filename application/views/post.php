@@ -11,8 +11,8 @@
   <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery-1.7.2.js"></script>
   <script type="text/javascript" src="js/jqScroll.js"></script>
   <script type="text/javascript" src="js/mustache.js"></script>
-  //Mustache template
-  //Add By Venshy in 7.28
+  <!--Mustache template
+  Add By Venshy in 7.28-->
   <script type="text/template" id="template">
     <div class="scoll_liuContainer">
       <div class="scoll_liuTit">
