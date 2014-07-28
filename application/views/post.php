@@ -33,13 +33,13 @@
         //Ajax comment
         //add by Venshy in 7.28
         var show = function ( urlnew ) {
-            console.log('s')
             var urlNow = window.location.href
             ,   urlArr = urlNow.slice(40).split('/')
             ,   picId  = urlArr[0]
             ,   page   = urlArr[1];
             var url = urlnew || 'http://pic.ecjtu.net/index.php/comments_ajax/' + picId;
             jQuery.get( url, function (data) {
+                console.log(data)
                 var template = jQuery('#template').html()
                 ,   i = 0
                 ,   j = 1
@@ -49,6 +49,7 @@
                 ,   list  = data['comments']
                 ,   content = '';
                 if ( list ) {
+                    console.log(list)
                     jQuery('.scoll_liuContainer').remove();
                     jQuery('.pagelink').remove();
                     for ( ; i < count; i++ ) {                            //3 返回的评论数
@@ -89,6 +90,7 @@
                             + picId + '/' + j + '">' + j + '</a>';
                     }
                     listBox.append( alist );
+                    console.log(content, listBox)
                     jQuery('#scoll_liuDott').after(content, listBox);
                 }
             }, 'json' );
@@ -582,10 +584,10 @@ jQuery(document).ready(function() {
 
   
             </div>
-        <!--    <div id="scoll_liu">
+            <div id="scoll_liu">
                <div id="scoll_liuImg" class="liuImg"><img src="images/says.gif" /></div>
                <div id="scoll_liuDott"></div>
-               <?php foreach ($comments as $rs):?>
+          <!--     <?php foreach ($comments as $rs):?>
                <div class="scoll_liuContainer">
                   <div class="scoll_liuTit"><span class="liuName"><?php echo $rs['comments_author'];?></span><span class="liuDate"><?php echo date('Y-m-d h:i:s',$rs['comments_time']);?></span></div>
                   <div class="scoll_liuR"><?php echo $rs['comments_text']; ?></div>
