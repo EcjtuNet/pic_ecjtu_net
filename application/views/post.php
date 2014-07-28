@@ -52,7 +52,7 @@
                     jQuery('.scoll_liuContainer').remove();
                     jQuery('.pagelink').remove();
                     for ( ; ++i < count; ) {                            //3 返回的评论数
-                        var unix = new Date( list[i]['comments_time'] )
+                        var unix = new Date( list[i]['comments_time']*1000 )
                         ,   year = unix.getFullYear()
                         ,   month = unix.getMonth() + 1
                         ,   date  = unix.getDate()
@@ -68,6 +68,12 @@
                         if ( hour < 10 ) {
                             hour = '0' + hour;
                         }
+                        if ( minu < 10 ) {
+                            minu = '0' + minu;
+                        }
+                        if ( sec < 10 ) {
+                            sec = '0' + sec;
+                        }
                         list[i]['comments_time'] = year + '-' + month + '-' + date
                             + ' ' + hour + ':' + minu + ':' + sec;
                         content += Mustache.to_html( template, list[i] );
@@ -80,7 +86,7 @@
                             continue;
                         }
                         alist += '&nbsp;<a href="http://pic.ecjtu.net/index.php/comments_ajax/' 
-                            + picId + '/' + curPage + '">' + j + '</a>';
+                            + picId + '/' + j + '">' + j + '</a>';
                     }
                     listBox.append( alist );
                     jQuery('#scoll_liuDott').after(content, listBox);
@@ -576,17 +582,17 @@ jQuery(document).ready(function() {
 
   
             </div>
-            <div id="scoll_liu">
+        <!--    <div id="scoll_liu">
                <div id="scoll_liuImg" class="liuImg"><img src="images/says.gif" /></div>
                <div id="scoll_liuDott"></div>
                <?php foreach ($comments as $rs):?>
-               <div class="scoll_liuContainer"><!--留言一-->
+               <div class="scoll_liuContainer">
                   <div class="scoll_liuTit"><span class="liuName"><?php echo $rs['comments_author'];?></span><span class="liuDate"><?php echo date('Y-m-d h:i:s',$rs['comments_time']);?></span></div>
                   <div class="scoll_liuR"><?php echo $rs['comments_text']; ?></div>
                   <div class="scoll_liuX"></div>
                </div>
                <?php endforeach; ?>
-              <div class="pagelink"><?php echo $page_links; ?></div>
+              <div class="pagelink"><?php echo $page_links; ?></div> -->
                <form action="<?php echo site_url('comments_insert')?>" method="post" name="commentform" id="admin_comments" >
                <input type="text" name="author" maxlength="49" value="日新网友" class="admin_name"  id="admin_name">
           
