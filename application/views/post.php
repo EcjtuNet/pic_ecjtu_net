@@ -84,7 +84,7 @@
                             + ' ' + hour + ':' + minu + ':' + sec;
                         content += Mustache.to_html( template, list[i] );
                     }
-                    var listBox = jQuery('<div class="pageLink"></div>')
+                    var listBox = jQuery('<div class="pagelink"></div>')
                     ,   alist   = '';
                     for ( ; j < total; j++ ) {
                         if ( j === curPage - 1 ) {
