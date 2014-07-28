@@ -1,3 +1,4 @@
 data.sql
 application/config/database.php
+application/cache/*
 pic
