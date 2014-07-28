@@ -41,10 +41,7 @@
             */
             var picId = <?php echo $picid; ?>;
             var url = urlnew || 'http://pic.ecjtu.net/index.php/comments_ajax/' + picId + '/0';
-            
-            console.log(url)
             jQuery.get( url, function (data) {
-                console.log(data)
                 var template = jQuery('#template').html()
                 ,   i = 0
                 ,   j = 0
@@ -54,7 +51,6 @@
                 ,   list  = data['comments']
                 ,   content = '';
                 if ( list ) {
-                    console.log(list)
                     jQuery('.scoll_liuContainer').remove();
                     jQuery('.pagelink').remove();
                     for ( ; i < count; i++ ) {                            //3 返回的评论数
@@ -95,14 +91,12 @@
                             + picId + '/' + j + '">' + (j + 1) + '</a>';
                     }
                     listBox.append( alist );
-                    console.log(content, listBox)
                     jQuery('#scoll_liuDott').after(content, listBox);
                 }
             }, 'json' );
         };
-        console.log('shownext')
         show();
-        jQuery('.pageLink a').live('click', function ( e ) {
+        jQuery('.pagelink a').live('click', function ( e ) {
             e.preventDefault();
             show( jQuery(this).attr('href') );
         });
