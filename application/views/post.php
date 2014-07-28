@@ -33,10 +33,13 @@
         //Ajax comment
         //add by Venshy in 7.28
         var show = function ( urlnew ) {
+        	/*
             var urlNow = window.location.href
             ,   urlArr = urlNow.slice(40).split('/')
             ,   picId  = urlArr[0]
             ,   page   = urlArr[1];
+            */
+            var picId = <?php echo $picid; ?>;
             var url = urlnew || 'http://pic.ecjtu.net/index.php/comments_ajax/' + picId;
             jQuery.get( url, function (data) {
                 console.log(data)
