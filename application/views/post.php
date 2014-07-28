@@ -92,7 +92,7 @@
                             continue;
                         }
                         alist += '&nbsp;<a href="http://pic.ecjtu.net/index.php/comments_ajax/' 
-                            + picId + '/' + j + 1 + '">' + j + 1 + '</a>';
+                            + picId + '/' + (j + 1) + '">' + (j + 1) + '</a>';
                     }
                     listBox.append( alist );
                     console.log(content, listBox)
