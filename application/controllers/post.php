@@ -213,7 +213,7 @@ class Post extends CI_Controller
 	function comments($picid, $page)
 	{
 		$perpage = 3;
-		$comments = $this->Posts_m->get_comments_by_id($picid, $page, $perpage);
+		$comments = $this->Posts_m->get_comments_by_id($picid, $page*$perpage, $perpage);
 		$comments_rows = $this->Posts_m->get_comments_nums($picid);
 		echo json_encode(array(
 			'cur_page'=>$page,
