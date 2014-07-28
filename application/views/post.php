@@ -99,6 +99,7 @@
                 }
             }, 'json' );
         };
+        console.log('shownext')
         show();
         jQuery('.pageLink a').live('click', function ( e ) {
             e.preventDefault();
