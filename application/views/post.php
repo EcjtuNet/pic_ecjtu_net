@@ -84,7 +84,7 @@
                     ,   alist   = '';
                     for ( ; j < total; j++ ) {
                         if ( j === curPage*1 ) {
-                            alist += '&nbsp;<strong>' + (curPage + 1) + '</strong>';
+                            alist += '&nbsp;<strong>' + (curPage*1 + 1) + '</strong>';
                             continue;
                         }
                         alist += '&nbsp;<a href="http://pic.ecjtu.net/index.php/comments_ajax/' 
