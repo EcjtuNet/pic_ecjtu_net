@@ -33,6 +33,7 @@
         //Ajax comment
         //add by Venshy in 7.28
         var show = function ( urlnew ) {
+            console.log('s')
             var urlNow = window.location.href
             ,   urlArr = urlNow.slice(40).split('/')
             ,   picId  = urlArr[0]
