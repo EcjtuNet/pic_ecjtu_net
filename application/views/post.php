@@ -41,6 +41,7 @@
             */
             var picId = <?php echo $picid; ?>;
             var url = urlnew || 'http://pic.ecjtu.net/index.php/comments_ajax/' + picId;
+            console.log(url)
             jQuery.get( url, function (data) {
                 console.log(data)
                 var template = jQuery('#template').html()
