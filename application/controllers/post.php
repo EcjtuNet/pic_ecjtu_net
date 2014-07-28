@@ -214,8 +214,10 @@ class Post extends CI_Controller
 	{
 		$perpage = 3;
 		$comments = $this->Posts_m->get_comments_by_id($picid, $page, $perpage);
+		$comments_rows = $this->Posts_m->get_comments_nums($picid);
 		echo json_encode(array(
 			'cur_page'=>$page,
+			'total_page'=>ceil($comments_rows/$perpage),
 			'comments_count'=>count($comments),
 			'comments'=>$comments
 		));
