@@ -37,7 +37,7 @@
             ,   urlArr = urlNow.slice(40).split('/')
             ,   picId  = urlArr[0]
             ,   page   = urlArr[1];
-            var url = urlnew || 'http://pic.ecjtu.net/index.php/comments_ajax/' + picId + '/' + page;
+            var url = urlnew || 'http://pic.ecjtu.net/index.php/comments_ajax/' + picId;
             jQuery.get( url, function (data) {
                 var template = jQuery('#template').html()
                 ,   i = 0
@@ -47,11 +47,10 @@
                 ,   total = data['total_page']
                 ,   list  = data['comments']
                 ,   content = '';
-
                 if ( list ) {
                     jQuery('.scoll_liuContainer').remove();
                     jQuery('.pagelink').remove();
-                    for ( ; ++i < count; ) {                            //3 返回的评论数
+                    for ( ; i < count; i++ ) {                            //3 返回的评论数
                         var unix = new Date( list[i]['comments_time']*1000 )
                         ,   year = unix.getFullYear()
                         ,   month = unix.getMonth() + 1
@@ -80,8 +79,8 @@
                     }
                     var listBox = jQuery('<div class="pageLink"></div>')
                     ,   alist   = '';
-                    for ( ; ++j <= total; ) {
-                        if ( j === curPage ) {
+                    for ( ; j <= total; j++ ) {
+                        if ( j === curPage*1 ) {
                             alist += '&nbsp;<strong>' + curPage + '</strong>';
                             continue;
                         }
