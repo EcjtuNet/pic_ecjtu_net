@@ -87,12 +87,12 @@
                     var listBox = jQuery('<div class="pageLink"></div>')
                     ,   alist   = '';
                     for ( ; j < total; j++ ) {
-                        if ( j + 1 === curPage*1 ) {
+                        if ( j === curPage - 1 ) {
                             alist += '&nbsp;<strong>' + curPage + '</strong>';
                             continue;
                         }
                         alist += '&nbsp;<a href="http://pic.ecjtu.net/index.php/comments_ajax/' 
-                            + picId + '/' + (j + 1) + '">' + (j + 1) + '</a>';
+                            + picId + '/' + j + '">' + (j + 1) + '</a>';
                     }
                     listBox.append( alist );
                     console.log(content, listBox)
