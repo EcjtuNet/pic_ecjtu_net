@@ -10,6 +10,19 @@
   <script type="text/javascript" src="js/slider.js"></script>
   <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery-1.7.2.js"></script>
   <script type="text/javascript" src="js/jqScroll.js"></script>
+  <script type="text/javascript" src="js/mustache.js"></script>
+  //Mustache template
+  //Add By Venshy in 7.28
+  <script type="text/template" id="template">
+    <div class="scoll_liuContainer">
+      <div class="scoll_liuTit">
+        <span class="liuName">{{comments_author}}</span>
+        <span class="liuDate">{{comments_time}}</span>
+      </div>
+      <div class="scoll_liuR">{{comments_text}}</div>
+      <div class="scoll_liuX"></div>
+    </div>
+  </script>
   <script type="text/javascript">
 	jQuery(document).ready(function(){
 		jQuery("#admin_content").keypress(function(e){
@@ -17,7 +30,69 @@
 				jQuery("#admin_comments").submit();
 				};
 			});
-	})
+        //Ajax comment
+        //add by Venshy in 7.28
+        var show = function ( urlnew ) {
+            var urlNow = window.location.href
+            ,   urlArr = urlNow.slice(40).split('/')
+            ,   picId  = urlArr[0]
+            ,   page   = urlArr[1];
+            var url = urlnew || 'http://pic.ecjtu.net/index.php/comments_ajax/' + picId + '/' + page;
+            jQuery.get( url, function (data) {
+                var template = jQuery('#template').html()
+                ,   i = 0
+                ,   j = 1
+                ,   curPage = data['cur_page']
+                ,   count = data['comments_count']
+                ,   total = data['total_page']
+                ,   list  = data['comments']
+                ,   content = '';
+
+                if ( list ) {
+                    jQuery('.scoll_liuContainer').remove();
+                    jQuery('.pagelink').remove();
+                    for ( ; ++i < count; ) {                            //3 返回的评论数
+                        var unix = new Date( list[i]['comments_time'] )
+                        ,   year = unix.getFullYear()
+                        ,   month = unix.getMonth() + 1
+                        ,   date  = unix.getDate()
+                        ,   hour  = unix.getHours()
+                        ,   minu  = unix.getMinutes()
+                        ,   sec   = unix.getSeconds();
+                        if ( month < 10 ) {
+                            month = '0' + month;
+                        }
+                        if ( date < 10 ) {
+                            date = '0' + date;
+                        }
+                        if ( hour < 10 ) {
+                            hour = '0' + hour;
+                        }
+                        list[i]['comments_time'] = year + '-' + month + '-' + date
+                            + ' ' + hour + ':' + minu + ':' + sec;
+                        content += Mustache.to_html( template, list[i] );
+                    }
+                    var listBox = jQuery('<div class="pageLink"></div>')
+                    ,   alist   = '';
+                    for ( ; ++j <= total; ) {
+                        if ( j === curPage ) {
+                            alist += '&nbsp;<strong>' + curPage + '</strong>';
+                            continue;
+                        }
+                        alist += '&nbsp;<a href="http://pic.ecjtu.net/index.php/comments_ajax/' 
+                            + picId + '/' + curPage + '">' + j + '</a>';
+                    }
+                    listBox.append( alist );
+                    jQuery('#scoll_liuDott').after(content, listBox);
+                }
+            }, 'json' );
+        };
+        show();
+        jQuery('.pageLink a').live('click', function ( e ) {
+            e.preventDefault();
+            show( jQuery(this).attr('href') );
+        });
+	});
   </script>
 
   <script type="text/javascript" >
@@ -38,7 +113,7 @@ if (!Array.prototype.forEach) {
         k = 0;  
         while (k < len) {  
             var kValue;  
-            if (k in O) {  
+            if (k in O) {
                 kValue = O[k];  
                 callback.call(T, kValue, k, O);  
             }  
@@ -171,7 +246,7 @@ jQuery(document).ready(function() {
                <div id="scoll_right">
                    <img src="images/next_press_r.gif" />
                </div>
-               <div id="scoll_line" style="display:none;"><div id="point_left"></div><div id="line"></div><div id="point_right"></div>
+               <div id="scoll_line"><div id="point_left"></div><div id="line"></div><div id="point_right"></div>
 			   <div id="moveBut"><img src="images/sLeft.gif" /><div class="moveLen"></div><img src="images/sMiddle.gif" /><div class="moveLen"></div><img src="images/sRight.gif" /></div>
 			   </div>
 			   <script type="text/javascript">
