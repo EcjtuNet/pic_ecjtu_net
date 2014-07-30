@@ -235,7 +235,7 @@ jQuery(document).ready(function() {
             <div id="right_but"><a href="javascript:;"></a></div>
 			
             <div id="tuji_intro"><p><?php echo $description; ?></p></div>
-            <div id="scoll">
+            <div id="scoll" style="display: none;">
                <div id="scoll_left">
                    <img src="images/next_press.gif" />
                </div>
@@ -351,7 +351,7 @@ jQuery(document).ready(function() {
 			})*/
 
                 function right_but(){
-				
+                    $('left_btn').style.background = 'url(../images/btn_arrow_press.gif)';
 					start++;numCount++;
 					if(start+1>count)
 					{

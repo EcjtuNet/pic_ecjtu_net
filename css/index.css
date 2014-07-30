@@ -15,8 +15,6 @@ a{text-decoration:none;}
 	.tushuo a:hover{ background:url(../images/anniu.png) no-repeat -128px -31px ; }
 .mid{width:980px; margin:auto; background:#000;height:100%; overflow:hidden; }
 .hand{cursor:pointer;}
-/* 关闭图片下方滚动 */
-#scroll{display: none;}
 /* leftBtn loaded */
 #left_btn{background: none;}
 
