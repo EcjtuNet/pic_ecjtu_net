@@ -15,6 +15,8 @@ a{text-decoration:none;}
 	.tushuo a:hover{ background:url(../images/anniu.png) no-repeat -128px -31px ; }
 .mid{width:980px; margin:auto; background:#000;height:100%; overflow:hidden; }
 .hand{cursor:pointer;}
+/* 关闭图片下方滚动 */
+#scroll{display: none;}
 
 
 #list{margin-top:-3px;width:980px;height:40px; background:url(../images/bg_line_repeat.gif);float:left;}
@@ -32,7 +34,7 @@ a{text-decoration:none;}
 #list_fun_ret span{margin-left:100px;}
 #left_but{clear:left;float:left;margin-top:202px;margin-left:35px;}
 #left_but a{background:url(../images/btn_arrow_press.gif); display:block;width:60px;height:60px;}
-#left_but a:hover{background:url(../images/btn_arrow_r.gif)}
+#left_but a:hover{background:url(../images/btn_arrow_r.png)}
 #tuji_show{width:740px;height:auto;height:550px;float:left;margin:0px 30px;overflow:hidden;position:relative;overflow:hidden;}
 #tuji_show_containner{width:auto;height:550px;position:absolute;left:0px;}
 #tuji_show img{margin:auto; position:relative; z-index:0;}
