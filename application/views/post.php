@@ -352,14 +352,13 @@ jQuery(document).ready(function() {
 
                 function right_but(){
 				
+					start++;numCount++;
 					if(start+1>count)
 					{
-						alert('已经到最后一张！');
+                        $('right').style.display = 'none';
 						clearInterval(t);
-						return;
 					}
 					
-					start++;numCount++;
 			//		console.log(numCount);
 					resize(size[start-1]);
 					$('left_but').style.visibility='visible';
@@ -388,12 +387,13 @@ jQuery(document).ready(function() {
 				}
 				 function left_but(){
 				 
-				 if(start-1==0)
-					{
-						return;
-					}
 					
 					start--;numCount--;
+                     if(start-1==0)
+                        {
+                            $('left_but').style.display = 'none';
+                            //return;
+                        }
 					resize(size[start-1]);
 					 $('right_but').style.visibility='visible';
 					 $('scoll_right').style.visibility='visible';
@@ -445,12 +445,13 @@ jQuery(document).ready(function() {
 				}
 				$('area_right').onclick=function(){right_but()};
 				$('scoll_right').onclick=function(){
+                    //change By Venshy in 7.30
+					start++;numCount++;
 					if(start+1>count)
 					{
-						alert('已经到最后一张！');
-						return;
+						//alert('已经到最后一张！');
+                        $('right').style.display = 'none';
 					}
-					start++;numCount++;
 				    $('left_but').style.visibility='visible';
 					$('scoll_left').style.visibility='visible';
 					if(getClassName('scroll_mid_bac')[0].offsetLeft<400){
