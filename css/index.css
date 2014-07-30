@@ -16,7 +16,7 @@ a{text-decoration:none;}
 .mid{width:980px; margin:auto; background:#000;height:100%; overflow:hidden; }
 .hand{cursor:pointer;}
 /* leftBtn loaded */
-#left_but_a{background: none;}
+#left_but_a{ background: none; position: relative; left: -9999px;}
 
 
 #list{margin-top:-3px;width:980px;height:40px; background:url(../images/bg_line_repeat.gif);float:left;}
@@ -33,8 +33,8 @@ a{text-decoration:none;}
 #list_fun_pro span{color:#6e6e6e;margin-left:10px;}
 #list_fun_ret span{margin-left:100px;}
 #left_but{clear:left;float:left;margin-top:202px;margin-left:35px;}
-#left_but a{background:url(../images/btn_arrow_press.gif); display:block;width:60px;height:60px;}
-#left_but a:hover{background:url(../images/btn_arrow_r.png)}
+#left_but_a{ display:block;width:60px;height:60px;} /*background:url(../images/btn_arrow_press.gif);*/
+#left_but_a:hover{background:url(../images/btn_arrow_r.png)}
 #tuji_show{width:740px;height:auto;height:550px;float:left;margin:0px 30px;overflow:hidden;position:relative;overflow:hidden;}
 #tuji_show_containner{width:auto;height:550px;position:absolute;left:0px;}
 #tuji_show img{margin:auto; position:relative; z-index:0;}

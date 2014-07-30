@@ -351,7 +351,7 @@ jQuery(document).ready(function() {
 			})*/
 
                 function right_but(){
-                    $('left_but_a').style.background = 'url(../images/btn_arrow_press.gif)';
+                    $('left_but_a').style.left = '0px';
 					start++;numCount++;
 					if(start+1>count)
 					{
@@ -391,7 +391,7 @@ jQuery(document).ready(function() {
 					start--;numCount--;
                      if(start-1==0)
                         {
-                            $('left_but_a').style.background = 'none';
+                            $('left_but_a').left = '-9999px';
                             //return;
                         }
 					resize(size[start-1]);
