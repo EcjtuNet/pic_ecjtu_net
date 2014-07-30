@@ -391,7 +391,7 @@ jQuery(document).ready(function() {
 					start--;numCount--;
                      if(start-1==0)
                         {
-                            $('left_but_a').left = '-9999px';
+                            $('left_but_a').style.left = '-9999px';
                             //return;
                         }
 					resize(size[start-1]);
