@@ -235,7 +235,7 @@ jQuery(document).ready(function() {
             <div id="right_but"><a href="javascript:;"></a></div>
 			
             <div id="tuji_intro"><p><?php echo $description; ?></p></div>
-            <div id="scoll" style="display: none;">
+            <div id="scoll">
                <div id="scoll_left">
                    <img src="images/next_press.gif" />
                </div>
@@ -254,7 +254,7 @@ jQuery(document).ready(function() {
                <div id="scoll_right">
                    <img src="images/next_press_r.gif" />
                </div>
-               <div id="scoll_line"><div id="point_left"></div><div id="line"></div><div id="point_right"></div>
+               <div id="scoll_line" style="display: none;"><div id="point_left"></div><div id="line"></div><div id="point_right"></div>
 			   <div id="moveBut"><img src="images/sLeft.gif" /><div class="moveLen"></div><img src="images/sMiddle.gif" /><div class="moveLen"></div><img src="images/sRight.gif" /></div>
 			   </div>
 			   <script type="text/javascript">
@@ -351,11 +351,11 @@ jQuery(document).ready(function() {
 			})*/
 
                 function right_but(){
-                    $('left_btn').style.background = 'url(../images/btn_arrow_press.gif)';
+                    $('left_but').style.background = 'url(../images/btn_arrow_press.gif)';
 					start++;numCount++;
 					if(start+1>count)
 					{
-                        $('right_btn').style.display = 'none';
+                        $('right_but').style.display = 'none';
 						clearInterval(t);
 					}
 					
@@ -450,7 +450,7 @@ jQuery(document).ready(function() {
 					if(start+1>count)
 					{
 						//alert('已经到最后一张！');
-                        $('right_btn').style.display = 'none';
+                        $('right_but').style.display = 'none';
 					}
 				    $('left_but').style.visibility='visible';
 					$('scoll_left').style.visibility='visible';
