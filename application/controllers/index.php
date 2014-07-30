@@ -12,8 +12,8 @@ class Home extends CI_Controller
 		$this->load->model('Category_m');
 		$this->load->model('Posts_m');
 		$this->data['options'] = $this->Options_m->get_options();
-		$cache = unserialize($this->data['options']['4']['options_value']);//ERRRRROR!!!
-		if(FALSE && $cache['cache_enabled'])//CLOSE CACHE!!!
+		$cache = unserialize($this->data['options']['4']['options_value']);
+		if($cache['cache_enabled'])
 		{
 			//echo $cache['cache_expire_time'];exit();
 			$this->output->cache($cache['cache_expire_time']);
