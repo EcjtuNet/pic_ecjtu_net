@@ -355,7 +355,7 @@ jQuery(document).ready(function() {
 					start++;numCount++;
 					if(start+1>count)
 					{
-                        $('right').style.display = 'none';
+                        $('right_btn').style.display = 'none';
 						clearInterval(t);
 					}
 					
@@ -391,7 +391,7 @@ jQuery(document).ready(function() {
 					start--;numCount--;
                      if(start-1==0)
                         {
-                            $('left_but').style.display = 'none';
+                            $('left_but').style.background = 'none';
                             //return;
                         }
 					resize(size[start-1]);
@@ -450,7 +450,7 @@ jQuery(document).ready(function() {
 					if(start+1>count)
 					{
 						//alert('已经到最后一张！');
-                        $('right').style.display = 'none';
+                        $('right_btn').style.display = 'none';
 					}
 				    $('left_but').style.visibility='visible';
 					$('scoll_left').style.visibility='visible';
