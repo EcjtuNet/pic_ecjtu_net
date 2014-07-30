@@ -386,7 +386,7 @@ jQuery(document).ready(function() {
 					
 				}
 				 function left_but(){
-				 
+                    $('right_but').style.background = 'url(../images/btn_arrow_l_press.gif)';
 					
 					start--;numCount--;
                      if(start-1==0)
