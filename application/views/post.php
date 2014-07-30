@@ -222,7 +222,7 @@ jQuery(document).ready(function() {
               <div class="hand" id="list_fun_ret"><span><a style="color:#bdbdbd;" href="<?php echo base_url()."index.php/list" ?>">返回图集列表</a></span></div>
           </div>
           <div id="tuji">
-            <div id="left_but"><a href="javascript:;"></a></div>
+            <div id="left_but"><a id="left_but_a" href="javascript:;"></a></div>
             <div id="tuji_show">
 			<div id="tuji_show_containner">
 			<div id="area_left" style="position:absolute;width:50%;height:100%;cursor:pointer; z-index:10"></div>
@@ -232,7 +232,7 @@ jQuery(document).ready(function() {
 			<?php endforeach; ?> 
 			</div>
 			</div>
-            <div id="right_but"><a href="javascript:;"></a></div>
+            <div id="right_but"><a id="right_but_a" href="javascript:;"></a></div>
 			
             <div id="tuji_intro"><p><?php echo $description; ?></p></div>
             <div id="scoll">
@@ -351,7 +351,7 @@ jQuery(document).ready(function() {
 			})*/
 
                 function right_but(){
-                    $('left_but').style.background = 'url(../images/btn_arrow_press.gif)';
+                    $('left_but_a').style.background = 'url(../images/btn_arrow_press.gif)';
 					start++;numCount++;
 					if(start+1>count)
 					{
@@ -386,12 +386,12 @@ jQuery(document).ready(function() {
 					
 				}
 				 function left_but(){
-                    $('right_but').style.background = 'url(../images/btn_arrow_l_press.gif)';
+                    $('right_but').style.display = 'block';
 					
 					start--;numCount--;
                      if(start-1==0)
                         {
-                            $('left_but').style.background = 'none';
+                            $('left_but_a').style.background = 'none';
                             //return;
                         }
 					resize(size[start-1]);
