@@ -17,6 +17,8 @@ a{text-decoration:none;}
 .hand{cursor:pointer;}
 /* 关闭图片下方滚动 */
 #scroll{display: none;}
+/* leftBtn loaded */
+#left_btn{background: none;}
 
 
 #list{margin-top:-3px;width:980px;height:40px; background:url(../images/bg_line_repeat.gif);float:left;}
