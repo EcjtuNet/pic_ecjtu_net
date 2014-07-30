@@ -16,7 +16,7 @@ a{text-decoration:none;}
 .mid{width:980px; margin:auto; background:#000;height:100%; overflow:hidden; }
 .hand{cursor:pointer;}
 /* leftBtn loaded */
-#left_but_a{ background: none; position: relative; left: -9999px;}
+#left_but_a{ background: url(../images/btn_arrow_press.gif); position: relative; left: -9999px;}
 
 
 #list{margin-top:-3px;width:980px;height:40px; background:url(../images/bg_line_repeat.gif);float:left;}
