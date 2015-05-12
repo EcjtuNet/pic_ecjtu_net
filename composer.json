@@ -1,6 +1,7 @@
 {
     "require": {
         "slim/slim": "^2.6",
-        "catfan/medoo": "^0.9.8"
+        "catfan/medoo": "^0.9.8",
+        "php-curl-class/php-curl-class": "^3.5"
     }
 }

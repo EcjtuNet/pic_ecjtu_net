@@ -26,6 +26,7 @@ const DATABASE_TO_JSON = array(
 );
 const DOMAIN = 'pic.ecjtu.net';
 const API_BASE_URL = DOMAIN . '/api';
+const USER_API_URL = 'http://user.ecjtu.net/api/user/'
 
 class JsonHeaders extends \Slim\Middleware
 {
@@ -48,14 +49,14 @@ $app->get('/list', function ($name) use ($app, $medoo) {
 	$data = $medoo->select(
 		'cyrec_posts', 
 		array(
-			'posts_id',
-			'posts_category',
-			'posts_title',
-			'posts_description',
-			'posts_thumb',
-			'posts_count',
-			'posts_pubdate',
-			'posts_hit',
+			'posts_id(pid)',
+			'posts_category(category)',
+			'posts_title(title)',
+			'posts_description(description)',
+			'posts_thumb(thumb)',
+			'posts_count(count)',
+			'posts_pubdate(pubdate)',
+			'posts_hit(click)',
 		), 
 		array(
 			'ORDER' => 'posts_pubdate DESC',
@@ -65,9 +66,8 @@ $app->get('/list', function ($name) use ($app, $medoo) {
 	$output = array();
 	foreach ($data as $row) {
 		foreach ($row as $key => $value) {
-			if($key == 'posts_thumb')
+			if($key == 'thumb')
 				$value = DOMAIN . '/' . $value;
-			$output[][DATABASE_TO_JSON[$key]] = $value;	
 		}
 	}
 	$count = count($output);
@@ -79,7 +79,84 @@ $app->get('/list', function ($name) use ($app, $medoo) {
 
 $app->get('/post/:pid', function ($pid) use ($app, $medoo) {
 	$pid = intval($pid);
-	//TODO
+	$data = $medoo->select(
+		'cyrec_posts',
+		array(
+			'posts_id(pid)',
+			'posts_category(category)',
+			'posts_title(title)',
+			'posts_description(description)',
+			'posts_keywords(keywords)',
+			'posts_author(author)',
+			'posts_thumb(thumb)',
+			'posts_pictures(pictures)',
+			'posts_count(count)',
+			'posts_pubdate(pubdate)',
+			'posts_hit(click)',
+			'posts_type(type)',
+			'posts_detail(detail)',
+		),
+		array(
+			'posts_id' => $pid,
+		)
+	);
+	if(!$data)
+		return $app->response->setStatus(404);
+
+	$pictures = unserialize($data['pictures']);
+	$detail = unserialize($data['detail']);
+	$out_pictures = array();
+	foreach ($pictures as $key => $row) {
+		$out_pictures[$key]['url'] = $row;
+		if(isset($detail[$key]) && $detail[$key])
+			$out_pictures[$key]['detail'] = $detail[$key];
+		else
+			$out_pictures[$key]['detail'] = '';
+	}
+	unset($data['pictures']);
+	unset($data['detail']);
+
+	$comments = $medoo->select(
+		'cyrec_comments',
+		array(
+			'comments_posts_id(pid)',
+			'comments_time(time)',
+			'comments_author(author)',
+			'comments_text(text)',
+			'comments_author_sid(sid)',
+		),
+		array(
+			'comments_posts_id' => $data['pid'],
+			'ORDER' => 'comments_time DESC',
+		),
+	);
+
+	foreach ($comments as $key => $row) {
+		if(isset($row['sid'] && $row['sid'])){
+			$curl = new Curl();
+			$user = $curl->get(USER_API_URL . $row['sid']);
+			$user = json_decode($user);
+			$user = $user['user'];
+			$comments[$key]['author'] = array(
+				'sid' => $row['sid'],
+				'name' => $user['name'],
+				'avatar' => $user['avatar'],
+			);
+		}else{
+			$comments[$key]['author'] = array(
+				'sid' => '',
+				'name' => $row['author'],
+				'avatar' => '',
+			);
+		}
+		unset($comments[$row]['sid']);
+	}
+
+	$data['thumb'] = DOMAIN . '/' . $data['thumb'];
+	$data['pictures'] = $out_pictures;
+	$data['comments'] = $comments;
+
+	echo json_encode($data);
 });
 
 $app->run();
