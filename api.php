@@ -11,9 +11,9 @@ $medoo = new medoo(array(
     'charset' => 'utf8'
 ));
 
-const DOMAIN = 'pic.ecjtu.net';
-const API_BASE_URL = DOMAIN . '/api';
-const USER_API_URL = 'http://user.ecjtu.net/api/user/';
+define('DOMAIN', 'pic.ecjtu.net');
+define('API_BASE_URL', DOMAIN . '/api');
+define('USER_API_URL', 'http://user.ecjtu.net/api/user/');
 
 class JsonHeaders extends \Slim\Middleware
 {
