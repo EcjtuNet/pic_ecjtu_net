@@ -14,6 +14,7 @@ $medoo = new medoo(array(
 define('DOMAIN', 'pic.ecjtu.net');
 define('API_BASE_URL', DOMAIN . '/api');
 define('USER_API_URL', 'http://user.ecjtu.net/api/user/');
+define('BASEPATH', __DIR__);//for CI
 
 class JsonHeaders extends \Slim\Middleware
 {
