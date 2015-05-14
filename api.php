@@ -1,6 +1,6 @@
 <?php
-require_once 'vendor/autoload.php';
-require_once __DIR__.'application/config/database.php';
+require_once __DIR__.'/vendor/autoload.php';
+require_once __DIR__.'/application/config/database.php';
 
 $medoo = new medoo(array(
 	'database_type' => 'mysql',
@@ -11,22 +11,9 @@ $medoo = new medoo(array(
     'charset' => 'utf8'
 ));
 
-const DATABASE_TO_JSON = array(
-	'posts_id' => 'pid',
-	'posts_category' => 'category',
-	'posts_slug' => 'slug',
-	'posts_title' => 'title',
-	'posts_description' => 'description',
-	'posts_keywords' => 'keywords',
-	'posts_author' => 'author',
-	'posts_thumb' => 'thumb',
-	'posts_count' => 'count',
-	'posts_pubdate' => 'pubdate',
-	'posts_hit' => 'click',
-);
 const DOMAIN = 'pic.ecjtu.net';
 const API_BASE_URL = DOMAIN . '/api';
-const USER_API_URL = 'http://user.ecjtu.net/api/user/'
+const USER_API_URL = 'http://user.ecjtu.net/api/user/';
 
 class JsonHeaders extends \Slim\Middleware
 {
@@ -42,7 +29,7 @@ $app = new \Slim\Slim();
 $app->add(new JsonHeaders());
 
 $app->get('/list', function ($name) use ($app, $medoo) {
-	const PER_PAGE = 3;
+	define('PER_PAGE', 3);
 	$page = intval($app->request->get('page'));
 	$page = $page < 0 ? 0 : $page;
 	$offset = ($page - 1) * PER_PAGE;
@@ -128,11 +115,11 @@ $app->get('/post/:pid', function ($pid) use ($app, $medoo) {
 		array(
 			'comments_posts_id' => $data['pid'],
 			'ORDER' => 'comments_time DESC',
-		),
+		)
 	);
 
 	foreach ($comments as $key => $row) {
-		if(isset($row['sid'] && $row['sid'])){
+		if(isset($row['sid']) && $row['sid']){
 			$curl = new Curl();
 			$user = $curl->get(USER_API_URL . $row['sid']);
 			$user = json_decode($user);
