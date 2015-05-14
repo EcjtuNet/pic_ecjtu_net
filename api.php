@@ -135,7 +135,6 @@ $app->get('/post/:pid', function ($pid) use ($app, $medoo) {
 				'avatar' => '',
 			);
 		}
-		unset($comments[$row]['sid']);
 	}
 
 	$data['thumb'] = DOMAIN . '/' . $data['thumb'];
