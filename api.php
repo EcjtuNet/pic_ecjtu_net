@@ -20,7 +20,7 @@ class JsonHeaders extends \Slim\Middleware
 {
     public function call()
     {
-        $app->response->headers->set(
+        $this->app->response->headers->set(
         	'Content-Type', 'application/json');
         $this->next->call();
     }
@@ -29,10 +29,10 @@ class JsonHeaders extends \Slim\Middleware
 $app = new \Slim\Slim();
 $app->add(new JsonHeaders());
 
-$app->get('/list', function ($name) use ($app, $medoo) {
+$app->get('/list', function () use ($app, $medoo) {
 	define('PER_PAGE', 3);
 	$page = intval($app->request->get('page'));
-	$page = $page < 0 ? 0 : $page;
+	$page = $page < 1 ? 1 : $page;
 	$offset = ($page - 1) * PER_PAGE;
 	$data = $medoo->select(
 		'cyrec_posts', 
@@ -53,10 +53,8 @@ $app->get('/list', function ($name) use ($app, $medoo) {
 	);
 	$output = array();
 	foreach ($data as $row) {
-		foreach ($row as $key => $value) {
-			if($key == 'thumb')
-				$value = DOMAIN . '/' . $value;
-		}
+		$row['thumb'] = DOMAIN . '/' . $row['thumb'];
+		$output[] = $row;
 	}
 	$count = count($output);
 	echo json_encode(array(
