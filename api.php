@@ -88,7 +88,7 @@ $app->get('/post/:pid', function ($pid) use ($app, $medoo) {
 	);
 	if(!$data)
 		return $app->response->setStatus(404);
-
+	$data = $data[0];
 	$pictures = unserialize($data['pictures']);
 	$detail = unserialize($data['detail']);
 	$out_pictures = array();
