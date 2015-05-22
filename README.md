@@ -7,7 +7,7 @@ http://pic.ecjtu.net/
 API
 ------
 
-    /api.php/list?[page=1]
+    /api.php/list?[page=1|before=1372561536]
 
 按时间降序，每次输出3条数据，返回如下：
 
@@ -48,6 +48,7 @@ API
     ]
 }
 ```
+其中page和before任选其一。before是unix时间戳，规则为小于不等于。
 
     /api.php/post/186
 
