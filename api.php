@@ -32,7 +32,8 @@ $app->add(new JsonHeaders());
 $app->get('/list', function () use ($app, $medoo) {
 	define('PER_PAGE', 3);
 	$condition = array(
-		'ORDER' => 'posts_pubdate DESC'
+		'ORDER' => 'posts_pubdate DESC',
+		'LIMIT' => PER_PAGE,
 	);
 	$page = intval($app->request->get('page'));
 	$before = $app->request->get('before');
