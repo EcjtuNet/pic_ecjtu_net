@@ -31,9 +31,19 @@ $app->add(new JsonHeaders());
 
 $app->get('/list', function () use ($app, $medoo) {
 	define('PER_PAGE', 3);
+	$condition = array(
+		'ORDER' => 'posts_pubdate DESC'
+	);
 	$page = intval($app->request->get('page'));
-	$page = $page < 1 ? 1 : $page;
-	$offset = ($page - 1) * PER_PAGE;
+	$before = $app->request->get('before');
+	if($page){
+		$page = $page < 1 ? 1 : $page;
+		$offset = ($page - 1) * PER_PAGE;
+		$condition['LIMIT'] = array($offset, PER_PAGE);
+	}elseif($before){
+		$condition['posts_pubdate[<]'] = $before;
+		$condition['LIMIT'] = PER_PAGE;
+	}
 	$data = $medoo->select(
 		'cyrec_posts', 
 		array(
@@ -46,10 +56,7 @@ $app->get('/list', function () use ($app, $medoo) {
 			'posts_pubdate(pubdate)',
 			'posts_hit(click)',
 		), 
-		array(
-			'ORDER' => 'posts_pubdate DESC',
-			'LIMIT' => array($offset, PER_PAGE),
-		)
+		$condition
 	);
 	$output = array();
 	foreach ($data as $row) {
