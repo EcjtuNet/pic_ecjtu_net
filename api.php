@@ -43,6 +43,7 @@ $app->get('/list', function () use ($app, $medoo) {
 
 	$offset = ($page - 1) * $per_page;
 	$condition['LIMIT'] = array($offset, $per_page);
+	$condition['ORDER'] = 'posts_pubdate DESC';
 	if ($before) {
 			$condition['ORDER'] = 'posts_pubdate DESC';
 			$condition['posts_pubdate[<]'] = $before;
