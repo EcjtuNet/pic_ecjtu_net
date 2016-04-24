@@ -31,22 +31,28 @@ $app->add(new JsonHeaders());
 
 $app->get('/list', function () use ($app, $medoo) {
 	define('PER_PAGE', 3);
-	$condition = array(
-		'ORDER' => 'posts_pubdate DESC',
-		'LIMIT' => PER_PAGE,
-	);
 	$page = intval($app->request->get('page'));
+	$page = $page<=0 ? 1 : $page;
 	$before = $app->request->get('before');
-	if($page){
-		$page = $page < 1 ? 1 : $page;
-		$offset = ($page - 1) * PER_PAGE;
-		$condition['LIMIT'] = array($offset, PER_PAGE);
-	}elseif($before){
-		$condition['posts_pubdate[<]'] = $before;
-		$condition['LIMIT'] = PER_PAGE;
+	$until = intval($app->request->get('until'));
+	$per_page = intval($app->request->get('$per_page'));
+	if (!$per_page) {
+		$per_page = PER_PAGE;
 	}
+	$per_page = $per_page<=0 ? PER_PAGE : $per_page;
+
+	$offset = ($page - 1) * $per_page;
+	$condition['LIMIT'] = array($offset, $per_page);
+	if ($before) {
+			$condition['ORDER'] = 'posts_pubdate DESC';
+			$condition['posts_pubdate[<]'] = $before;
+	} elseif ($until) {
+			$condition['ORDER'] = 'posts_id DESC';
+			$condition['posts_id[<]'] = $until;
+	}
+
 	$data = $medoo->select(
-		'cyrec_posts', 
+		'cyrec_posts',
 		array(
 			'posts_id(pid)',
 			'posts_category(category)',
@@ -56,7 +62,7 @@ $app->get('/list', function () use ($app, $medoo) {
 			'posts_count(count)',
 			'posts_pubdate(pubdate)',
 			'posts_hit(click)',
-		), 
+		),
 		$condition
 	);
 	$output = array();
