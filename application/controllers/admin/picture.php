@@ -29,9 +29,9 @@ class Picture extends CI_Controller{
 	$config['wm_overlay_path'] = 'ui/images/WWW.ECJTU.png';
 	$config['wm_vrt_alignment'] = 'bottom';
 	$config['wm_hor_alignment'] = 'right';
-    $config['wm_opacity '] = '0';//暂时去掉
-	$this->image_lib->initialize($config); 
-	$this->image_lib->watermark();
+    //暂时去掉水印功能
+	//$this->image_lib->initialize($config); 
+	//$this->image_lib->watermark();
 	echo "FILEID:" . str_replace('/', '_', $uploadfile);
   }
   
